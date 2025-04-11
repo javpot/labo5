@@ -1,6 +1,7 @@
 // MainFrame.java : Fenêtre principale avec barre d'outils et ImagePanel
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 
 public class MainFrame extends JFrame {
     private ImageModel imageModel;
@@ -28,6 +29,7 @@ public class MainFrame extends JFrame {
         JButton btnDown = new JButton("↓");
         JButton btnUndo = new JButton("Undo");
         JButton btnSave = new JButton("Save");
+
 
         // Écouteurs pour les boutons
         btnZoomIn.addActionListener(e -> {
@@ -67,6 +69,7 @@ public class MainFrame extends JFrame {
             controller.save("etatSauvegarde.dat");
         });
 
+
         toolBar.add(btnZoomIn);
         toolBar.add(btnZoomOut);
         toolBar.addSeparator();
@@ -77,6 +80,27 @@ public class MainFrame extends JFrame {
         toolBar.addSeparator();
         toolBar.add(btnUndo);
         toolBar.add(btnSave);
+        JButton btnLoad = new JButton("Load");
+        btnLoad.addActionListener(e -> {
+            // Pour une solution complète, utilisez un JFileChooser pour sélectionner le fichier à charger
+            String fileName = "C:\\Users\\Jaja\\Documents\\Labo5\\etatSauvegarde.dat";
+            Command loadCmd = new LoadCommand(fileName, imageModel, perspective);
+            loadCmd.execute();
+        });
+        toolBar.add(btnLoad);
+
+        JButton btnOpenImage = new JButton("Ouvrir Image");
+        btnOpenImage.addActionListener(e -> {
+            JFileChooser fileChooser = new JFileChooser();
+
+            int result = fileChooser.showOpenDialog(MainFrame.this);
+            if (result == JFileChooser.APPROVE_OPTION) {
+                File selectedFile = fileChooser.getSelectedFile();
+                // Met à jour le chemin de l'image dans ImageModel
+                imageModel.setFilePath(selectedFile.getAbsolutePath());
+            }
+        });
+        toolBar.add(btnOpenImage);
 
         getContentPane().setLayout(new BorderLayout());
         getContentPane().add(toolBar, BorderLayout.NORTH);
