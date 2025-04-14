@@ -1,4 +1,8 @@
-// TranslateCommand.java
+package controller;
+
+import model.Perspective;
+import model.PerspectiveState;
+
 public class TranslateCommand implements Command {
     private Perspective perspective;
     private int newX;
@@ -15,14 +19,14 @@ public class TranslateCommand implements Command {
     public void execute() {
         previousState = perspective.createMemento();
         perspective.setTranslate(newX, newY);
-        System.out.println("TranslateCommand : translation modifiée à (" + newX + ", " + newY + ")");
+        System.out.println("controller.TranslateCommand : translation modifiée à (" + newX + ", " + newY + ")");
     }
 
     @Override
     public void undo() {
         if (previousState != null) {
             perspective.restoreMemento(previousState);
-            System.out.println("TranslateCommand annulé.");
+            System.out.println("controller.TranslateCommand annulé.");
         }
     }
 }

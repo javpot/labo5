@@ -1,4 +1,5 @@
-// ImageModel.java
+package model;
+
 import java.io.Serializable;
 import java.io.File;
 import java.io.IOException;
@@ -25,7 +26,7 @@ public class ImageModel implements Subject, Serializable {
         notifyObservers();
     }
 
-    // Méthode pour charger l'image à partir du chemin
+
     public BufferedImage getBufferedImage() {
         try {
             return ImageIO.read(new File(filePath));

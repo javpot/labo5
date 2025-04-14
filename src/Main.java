@@ -1,4 +1,6 @@
-// Main.java : Point d'entrée de l'application graphique
+
+import view.MainFrame;
+
 import javax.swing.SwingUtilities;
 
 public class Main {

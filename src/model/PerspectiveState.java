@@ -1,4 +1,4 @@
-// PerspectiveState.java (Memento)
+package model;//(Memento)
 import java.io.Serializable;
 
 public class PerspectiveState implements Serializable {

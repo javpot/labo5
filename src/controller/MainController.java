@@ -1,4 +1,8 @@
-// MainController.java
+package controller;
+
+import model.ImageModel;
+import model.Perspective;
+
 public class MainController {
     private ImageModel imageModel;
     private Perspective perspective;

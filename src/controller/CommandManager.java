@@ -1,4 +1,4 @@
-// CommandManager.java (Singleton)
+package controller;// controller.CommandManager.java (Singleton)
 import java.util.Stack;
 
 public class CommandManager {

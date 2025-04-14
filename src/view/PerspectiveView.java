@@ -1,6 +1,8 @@
+package view;
 
+import model.Observer;
+import model.Perspective;
 
-// PerspectiveView.java (peut être intégré dans une partie de l'interface)
 public class PerspectiveView implements Observer {
     private Perspective perspective;
 
@@ -11,8 +13,8 @@ public class PerspectiveView implements Observer {
 
     @Override
     public void update() {
-        System.out.println("PerspectiveView : zoom = " + perspective.getZoomFactor() +
+        System.out.println("view.PerspectiveView : zoom = " + perspective.getZoomFactor() +
                 ", translation = (" + perspective.getTranslateX() + ", " + perspective.getTranslateY() + ")");
-        // Dans une interface graphique, cette vue pourrait être associée à des labels affichant les paramètres
+
     }
 }

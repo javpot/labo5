@@ -1,4 +1,10 @@
-// MainFrame.java : Fenêtre principale avec barre d'outils et ImagePanel
+package view;// Fenêtre principale avec barre d'outils et view.ImagePanel
+import controller.Command;
+import controller.LoadCommand;
+import controller.MainController;
+import model.ImageModel;
+import model.Perspective;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
@@ -11,8 +17,8 @@ public class MainFrame extends JFrame {
 
     public MainFrame() {
         super("Application d'affichage d'images");
-        // Remplacer "chemin/vers/image.jpg" par le chemin d'une image existante sur votre système
-        imageModel = new ImageModel("C:\\Users\\Jaja\\Documents\\frog.jpg");
+
+        imageModel = new ImageModel("src/images/images-2.jpeg");
         perspective = new Perspective(1.0, 0, 0);
         controller = new MainController(imageModel, perspective);
         imagePanel = new ImagePanel(imageModel, perspective);
@@ -31,7 +37,7 @@ public class MainFrame extends JFrame {
         JButton btnSave = new JButton("Save");
 
 
-        // Écouteurs pour les boutons
+
         btnZoomIn.addActionListener(e -> {
             double currentZoom = perspective.getZoomFactor();
             controller.zoom(currentZoom * 1.2);
@@ -65,7 +71,7 @@ public class MainFrame extends JFrame {
         btnUndo.addActionListener(e -> controller.undo());
 
         btnSave.addActionListener(e -> {
-            // Dans une application réelle, utiliser un JFileChooser pour sélectionner l'emplacement
+
             controller.save("etatSauvegarde.dat");
         });
 
@@ -82,8 +88,8 @@ public class MainFrame extends JFrame {
         toolBar.add(btnSave);
         JButton btnLoad = new JButton("Load");
         btnLoad.addActionListener(e -> {
-            // Pour une solution complète, utilisez un JFileChooser pour sélectionner le fichier à charger
-            String fileName = "C:\\Users\\Jaja\\Documents\\Labo5\\etatSauvegarde.dat";
+
+            String fileName = "/Users/babyjv_/Documents/IMPORTANT STUFF/Java stuffs/labo6/etatSauvegarde.dat";
             Command loadCmd = new LoadCommand(fileName, imageModel, perspective);
             loadCmd.execute();
         });
@@ -96,7 +102,7 @@ public class MainFrame extends JFrame {
             int result = fileChooser.showOpenDialog(MainFrame.this);
             if (result == JFileChooser.APPROVE_OPTION) {
                 File selectedFile = fileChooser.getSelectedFile();
-                // Met à jour le chemin de l'image dans ImageModel
+
                 imageModel.setFilePath(selectedFile.getAbsolutePath());
             }
         });

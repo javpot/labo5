@@ -1,4 +1,8 @@
-// ImagePanel.java : Composant Swing affichant l'image avec les transformations
+package view;// view.ImagePanel.java : Composant Swing affichant l'image avec les transformations
+import model.ImageModel;
+import model.Observer;
+import model.Perspective;
+
 import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -31,10 +35,9 @@ public class ImagePanel extends JPanel implements Observer {
         BufferedImage image = imageModel.getBufferedImage();
         if (image != null) {
             Graphics2D g2d = (Graphics2D) g;
-            // Pour une meilleure interpolation lors du redimensionnement
+
             g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
                     RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            // Appliquer les transformations de zoom et translation
             double zoom = perspective.getZoomFactor();
             int tx = perspective.getTranslateX();
             int ty = perspective.getTranslateY();

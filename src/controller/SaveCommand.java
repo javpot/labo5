@@ -1,4 +1,8 @@
-// SaveCommand.java
+package controller;
+
+import model.ImageModel;
+import model.Perspective;
+
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.io.IOException;
@@ -19,7 +23,7 @@ public class SaveCommand implements Command {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileName))) {
             out.writeObject(imageModel);
             out.writeObject(perspective);
-            System.out.println("SaveCommand : état sauvegardé dans " + fileName);
+            System.out.println("controller.SaveCommand : état sauvegardé dans " + fileName);
         } catch (IOException e) {
             System.err.println("Erreur de sauvegarde : " + e.getMessage());
         }
@@ -27,6 +31,6 @@ public class SaveCommand implements Command {
 
     @Override
     public void undo() {
-        System.out.println("SaveCommand : aucune annulation pour la sauvegarde.");
+        System.out.println("controller.SaveCommand : aucune annulation pour la sauvegarde.");
     }
 }

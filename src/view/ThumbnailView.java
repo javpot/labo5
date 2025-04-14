@@ -1,6 +1,8 @@
+package view;
 
+import model.ImageModel;
+import model.Observer;
 
-// ThumbnailView.java (optionnel selon l'affichage souhaité)
 public class ThumbnailView implements Observer {
     private ImageModel imageModel;
 
@@ -11,7 +13,7 @@ public class ThumbnailView implements Observer {
 
     @Override
     public void update() {
-        System.out.println("ThumbnailView : l'image a changé => " + imageModel.getFilePath());
-        // Ici, dans une UI graphique, on pourrait mettre à jour une vignette dans un JPanel
+        System.out.println("view.ThumbnailView : l'image a changé => " + imageModel.getFilePath());
+
     }
 }
